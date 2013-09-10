@@ -11,7 +11,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
-import cloudscapemanager.DBProxy;
+import tools.db.DBProxy;
 
 public abstract class SQLQueryInternalFrame extends JInternalFrame
 {

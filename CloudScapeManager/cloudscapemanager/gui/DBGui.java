@@ -17,7 +17,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-import cloudscapemanager.DBProxy;
+import tools.db.DBProxy;
 
 /**
  * @author pj
@@ -52,24 +52,30 @@ public class DBGui extends JFrame implements ActionListener
 		if (fc.getSelectedFile() != null)
 		{
 			prefs.put("defaultDir", fc.getSelectedFile().getAbsolutePath());
-			dBProxy = new DBProxy();
-			dBProxy.connectDerby(fc.getSelectedFile().getPath());
-
-			SQLSchemaTree sQLSchemaTree = new SQLSchemaTree("SQLSchemaTree", dBProxy);
-			sQLSchemaTree.setBounds(0, 0, 800, 600);
-			sQLSchemaTree.setVisible(true);
-			desktop.add(sQLSchemaTree);
-
-			SQLSimpleQueryInternalFrame sQLSimpleQueryInternalFrame = new SQLSimpleQueryInternalFrame("SQLQueryPanel", dBProxy);
-			sQLSimpleQueryInternalFrame.setBounds(40, 40, 800, 600);
-			sQLSimpleQueryInternalFrame.setVisible(true);
-			desktop.add(sQLSimpleQueryInternalFrame);
+			DBProxy dbp = new DBProxy();
+			dbp.connectDerby(fc.getSelectedFile().getPath());
+			setDbProxy(dbp);
 		}
 		else
 		{
 			System.exit(0);
 		}
 
+	}
+
+	public void setDbProxy(DBProxy dbp)
+	{
+		dBProxy = dbp;
+
+		SQLSchemaTree sQLSchemaTree = new SQLSchemaTree("SQLSchemaTree", dBProxy);
+		sQLSchemaTree.setBounds(0, 0, 800, 600);
+		sQLSchemaTree.setVisible(true);
+		desktop.add(sQLSchemaTree);
+
+		SQLSimpleQueryInternalFrame sQLSimpleQueryInternalFrame = new SQLSimpleQueryInternalFrame("SQLQueryPanel", dBProxy);
+		sQLSimpleQueryInternalFrame.setBounds(40, 40, 800, 600);
+		sQLSimpleQueryInternalFrame.setVisible(true);
+		desktop.add(sQLSimpleQueryInternalFrame);
 	}
 
 	/**
@@ -88,7 +94,8 @@ public class DBGui extends JFrame implements ActionListener
 		}
 		else if ("SQLSimpleQueryInternalFrame".equals(e.getActionCommand()))
 		{
-			SQLSimpleQueryInternalFrame sQLSimpleQueryInternalFrame = new SQLSimpleQueryInternalFrame("SQLSimpleQueryInternalFrame", dBProxy);
+			SQLSimpleQueryInternalFrame sQLSimpleQueryInternalFrame = new SQLSimpleQueryInternalFrame("SQLSimpleQueryInternalFrame",
+					dBProxy);
 			sQLSimpleQueryInternalFrame.setVisible(true);
 			desktop.add(sQLSimpleQueryInternalFrame);
 			sQLSimpleQueryInternalFrame.requestFocusInWindow();

@@ -11,7 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 
-import cloudscapemanager.DBProxy;
+import tools.db.DBProxy;
 
 /**
  * @author pj

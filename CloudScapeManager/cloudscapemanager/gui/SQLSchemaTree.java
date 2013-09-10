@@ -20,7 +20,7 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeNode;
 
-import cloudscapemanager.DBProxy;
+import tools.db.DBProxy;
 
 /**
  * @author pj

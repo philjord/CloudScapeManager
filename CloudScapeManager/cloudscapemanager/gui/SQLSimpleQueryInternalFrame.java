@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
-import cloudscapemanager.DBProxy;
+import tools.db.DBProxy;
 
 /**
  * @author pj
