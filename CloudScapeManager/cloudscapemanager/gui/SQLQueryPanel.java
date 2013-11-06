@@ -41,9 +41,9 @@ public class SQLQueryPanel extends JPanel
 		{
 			ResultsTable resultsTable = (ResultsTable) ((JScrollPane) splitter.getRightComponent()).getViewport().getComponent(0);
 			String deleteAllQuery = resultsTable.getDeleteAllString();
-			dBProxy.execute(deleteAllQuery);
+			dBProxy.executeUpdate(deleteAllQuery);
 			String updateQuery = resultsTable.getUpdateString();
-			dBProxy.execute(updateQuery);
+			dBProxy.executeUpdate(updateQuery);
 		}
 	}
 
@@ -92,7 +92,7 @@ public class SQLQueryPanel extends JPanel
 				}
 				else
 				{
-					dBProxy.execute(query);
+					dBProxy.executeUpdate(query);
 				}
 			}
 		}
